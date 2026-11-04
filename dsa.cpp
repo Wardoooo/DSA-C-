@@ -1,7 +1,53 @@
 #include <iostream>
 #include <string>
+#include <stack>
 
 using namespace std;
+
+
+class node{
+public:
+    int item;
+    node *left, *right, *parent;
+    node(int x){
+        item = x;
+        left = right = parent = NULL;
+    }
+};
+
+void preOrder(node *r){
+    if(r!=NULL){
+        cout<<r->item<<" "; 
+        preOrder(r->left); 
+        preOrder(r->right);
+    }
+}
+void inOrder(node *r){
+    if(r!=NULL){
+         
+        inOrder(r->left); 
+        cout<<r->item<<" ";
+        inOrder(r->right);
+    }
+}
+void postOrder(node *r){
+    if(r!=NULL){
+        postOrder(r->left);
+        postOrder(r->right); 
+        cout<<r->item<<" ";
+    }
+}
+
+
+void process(stack<node*>& s, stack<char>& ops) {
+    node* right = s.top(); s.pop();
+    node* left = s.top(); s.pop();
+    char op = ops.top(); ops.pop();
+    node* newNode = new node(op);
+    newNode->left = left;
+    newNode->right = right;
+    s.push(newNode);
+}
 
 int main(){
 
@@ -36,6 +82,46 @@ int main(){
 
     switch(choice){
         case 1:
+            cout<<"You have chosen Tree!"<<endl;
+            cout<<"1 = Binary Tree"<<endl;
+            cout<<"2 = AVL Tree"<<endl;
+            cout<<"3 = Red-Black Tree"<<endl;
+            
+            int treeChoice;
+            cin>>treeChoice;
+            if(treeChoice==1){
+                //                 --- Input ---
+                // 100*200/2
+
+
+
+
+                // --- Program output ---
+
+
+                // --- Expected output (text)---
+                // \/ * 100 200 2
+                // 100 200 * 2 /
+                // 10000
+
+
+                //infix operation
+
+                string input;
+                cin>>input;
+
+
+                
+            }
+            else if(treeChoice==2){
+                
+            }
+            else if(treeChoice==3){
+               
+            }
+            else{
+                
+            }
 
         case 2:
 
